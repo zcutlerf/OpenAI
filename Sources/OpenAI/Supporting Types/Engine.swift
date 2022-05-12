@@ -20,7 +20,7 @@ public struct Engine: Hashable, Identifiable, Codable {
      A unique identifier for the engine.
 
      This enumeration provides cases for the
-     `ada`, `babbage`, `curie`, and `davinci` engines.
+     `text-ada-001`, `text-babbage-001`, `text-curie-001`, and `text-davinci-002` engines.
      You can add convenience APIs for other engines
      by defining computed type properties in an extension.
 
@@ -41,7 +41,7 @@ public struct Engine: Hashable, Identifiable, Codable {
          - Note: Any task performed by a faster model like Ada
                  can be performed by a more powerful model like Curie or Davinci
          */
-        case ada
+        case textAda001
 
         /**
          Babbage can perform straightforward tasks like simple classification.
@@ -50,7 +50,7 @@ public struct Engine: Hashable, Identifiable, Codable {
 
          Good at: Moderate classification, semantic search classification
          */
-        case babbage
+        case textBabbage001
 
         /**
          Curie is extremely powerful, yet very fast.
@@ -59,7 +59,7 @@ public struct Engine: Hashable, Identifiable, Codable {
          Curie is also quite good at answering questions
          and performing Q&A and as a general service chatbot.
          */
-        case curie
+        case textCurie001
 
         /**
          Davinci is the most capable engine and can perform any task the other models can perform
@@ -78,7 +78,7 @@ public struct Engine: Hashable, Identifiable, Codable {
 
          Good at: Language translation, complex classification, text sentiment, summarization
          */
-        case davinci
+        case textDavinci002
 
         case other(String)
     }
@@ -114,14 +114,14 @@ extension Engine.ID: Comparable {
 extension Engine.ID: CustomStringConvertible {
     public var description: String {
         switch self {
-        case .ada:
-            return "ada"
-        case .babbage:
-            return "babbage"
-        case .curie:
-            return "curie"
-        case .davinci:
-            return "davinci"
+        case .textAda001:
+            return "text-ada-001"
+        case .textBabbage001:
+            return "text-babbage-001"
+        case .textCurie001:
+            return "text-curie-001"
+        case .textDavinci002:
+            return "text-davinci-002"
         case .other(let name):
             return name
         }
@@ -133,14 +133,14 @@ extension Engine.ID: CustomStringConvertible {
 extension Engine.ID: LosslessStringConvertible {
     public init(_ description: String) {
         switch description {
-        case "ada":
-            self = .ada
-        case "babbage":
-            self = .babbage
-        case "curie":
-            self = .curie
-        case "davinci":
-            self = .davinci
+        case "text-ada-001":
+            self = .textAda001
+        case "text-babbage-001":
+            self = .textBabbage001
+        case "text-curie-001":
+            self = .textCurie001
+        case "text-davinci-002":
+            self = .textDavinci002
         default:
             self = .other(description)
         }
